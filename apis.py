@@ -1,6 +1,12 @@
-from flask import Flask, jsonify, url_for
+'''
+Title: Basic Bookshop APIs
+Author: Benny Hwang
+Date: 11/05/2018
+'''
+
+from flask import Flask, jsonify
 from flask_restful import reqparse
-from mongoengine import connect, StringField, Document, EmbeddedDocument, IntField, FloatField, DateTimeField
+from mongoengine import connect, StringField, Document, IntField, FloatField
 
 
 app = Flask(__name__)
@@ -77,7 +83,7 @@ def deletebook(id):
 
 
 # get books by filter. Filter will support tag, price between entered range, author, year
-# Usage: Have one or more of the fields as query parameters
+# Usage: Have one or more of the fields as query parameters e.g /books?tag=children
 @app.route('/book', methods=['GET'])
 def getbook():
     parser = reqparse.RequestParser()
